@@ -4,15 +4,18 @@ import BandInput from './BandInput';
 import { connect } from 'react-redux'
 
 class BandsContainer extends Component {
-  render() {
-    return (
-      <div>
-        <BandInput addBand={this.props.addBand}/>
-
-      </div>
-    )
+  renderBands = () => {
+    return this.props.bands.map(todo => <Band delete={this.props.delete} key={band.id} todo={band} />)
   }
-}
+
+  render() {
+    return(
+      <div>
+        {this.renderBands()}
+      </div>
+    );
+  }
+};
 
 const mapStateToProps = ({ bands }) => ({ bands })
 
